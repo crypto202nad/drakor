@@ -1,312 +1,388 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Telegram Mini App</title>
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
-  <style>
-    body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
-    button { padding: 10px 20px; font-size: 16px; }
-  </style>
-</head>
-<body>
-<div class="separator" style="clear: both; text-align: left;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh6zI8XVrWUSdJoxp7oEiju7K0SawXTrwsORxFI5JOeJcfuKbvoUNPMXzmsrR3FeMQC29ZYujVnMHWPSvGiBxqn6Ays3j4o98azuQK9JJJC1JvQkhZMWXZHK2UNLTrfEMd4M1yRS5xSVZtSFYEbL26kiitlsGx1O5oYc0wjdpU4ceVabL4betg5tV2e3c8/s300/film-bon-appetit-your-majesty-2025.png" imageanchor="1" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"><img border="0" data-original-height="344" data-original-width="258" height="200" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh6zI8XVrWUSdJoxp7oEiju7K0SawXTrwsORxFI5JOeJcfuKbvoUNPMXzmsrR3FeMQC29ZYujVnMHWPSvGiBxqn6Ays3j4o98azuQK9JJJC1JvQkhZMWXZHK2UNLTrfEMd4M1yRS5xSVZtSFYEbL26kiitlsGx1O5oYc0wjdpU4ceVabL4betg5tV2e3c8/s300/film-bon-appetit-your-majesty-2025.png" width="150" /></a><b>Sinopsis: </b>Dalam "Bon Appetit, Your Majesty" (2025), seorang pelayan makanan bernama Min-Ho tiba-tiba dibawa kembali ke masa lalu dan menjadi koki pribadi Raja. Dengan keahlian memasaknya, Min-Ho harus memenangkan hati Raja dan mengubah sejarah.</div>
-<br>
-<br>
-<br>
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-
 <html lang="id">
 <head>
-    <meta charset="UTF-8"></meta>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"></meta>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"></link>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drama Korea Terpopuler</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f0f2f5;
+            background-color: #f8f9fa;
             color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh;
-            padding: 10px;
+            line-height: 1.6;
         }
-        .main-container {
-            max-width: 900px;
-            width: 100%;
-            background-color: #fff;
-            border-radius: 8px;
+        
+        header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            padding: 20px;
         }
-        @media (min-width: 768px) {
-            body {
-                padding: 20px;
-            }
-            .main-container {
-                padding: 30px;
-            }
+        
+        .logo {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
         }
-        .video-player-wrapper {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
         }
-        .video-player-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
         }
-        .loading-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
-            border-radius: 8px;
-            transition: opacity 0.3s ease-in-out;
-        }
-        .loading-overlay.hidden {
-            display: none;
-            opacity: 0;
-        }
-        .loading-overlay:not(.hidden) {
-            opacity: 1;
-        }
-        .spinner {
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            border-top: 4px solid #fff;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .episode-grid {
+        
+        .drama-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
-            gap: 10px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
         }
-        .episode-item {
-            background-color: #fff;
-            padding: 15px 10px;
+        
+        .drama-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .drama-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .drama-poster {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            border-bottom: 4px solid #6a11cb;
+        }
+        
+        .drama-info {
+            padding: 1.5rem;
+        }
+        
+        .drama-title {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+        
+        .drama-year {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .drama-rating {
+            display: flex;
+            align-items: center;
+            color: #f39c12;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .drama-description {
+            color: #34495e;
+            margin-bottom: 1.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #6a11cb;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #2575fc;
+        }
+        
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .detail-container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .detail-poster {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            background: #2c3e50;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            transition: background 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background: #6a11cb;
+        }
+        
+        .detail-title {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        
+        .detail-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #7f8c8d;
+        }
+        
+        .detail-section {
+            margin-bottom: 2rem;
+        }
+        
+        .detail-section h3 {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+        
+        .cast-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .cast-item {
+            background: #f8f9fa;
+            padding: 1rem;
             border-radius: 8px;
             text-align: center;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease-in-out;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            border: 1px solid #e2e8f0;
         }
-        .episode-item:hover {
-            background-color: #e2e8f0;
-            transform: translateY(-2px);
-        }
-        .episode-item.active {
-            background-color: #ef4444;
-            color: white;
-            border-color: #ef4444;
-        }
-        .episode-item.clicked-redirect {
-            background-color: #fca5a5;
-            border-color: #ef4444;
-            color: #fff;
-        }
-        .sinopsis {
-            background-color: #f9fafb;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            line-height: 1.6;
-            color: #4a5568;
-            border: 1px solid #edf2f7;
-        }
-        .sinopsis strong {
-            color: #2d3748;
+        
+        @media (max-width: 768px) {
+            .drama-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            .detail-container {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+            
+            .detail-title {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="main-container">
-        <!-- Main Content Area (Video Player) -->
-        <div class="video-player-wrapper">
-            <!-- Single video player iframe -->
-            <iframe allowfullscreen="" id="video-player"></iframe>
-            <!-- Loading overlay -->
-            <div class="loading-overlay hidden" id="loading-overlay">
-                <div class="spinner"></div>
-                <p class="text-white mt-4">Memuat episode...</p>
-            </div>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <i class="fas fa-film"></i>
         </div>
+        <h1>Drama Korea Terpopuler</h1>
+        <p>Temukan drama Korea terbaik yang wajib untuk ditonton</p>
+    </header>
 
-        <!-- Episode List -->
-        <div class="episode-grid" id="episode-list">
-            <!-- Episodes will be generated here by JavaScript -->
+    <!-- Main Content -->
+    <div class="container">
+        <div class="drama-grid">
+            <!-- Drama 1 -->
+            <div class="drama-card" onclick="showDetail(1)">
+                <img src="https://i.ibb.co/6RJ0hQ6/crash-landing-on-you.jpg" alt="Crash Landing on You" class="drama-poster">
+                <div class="drama-info">
+                    <h2 class="drama-title">Crash Landing on You</h2>
+                    <div class="drama-year">2019 • 16 Episode</div>
+                    <div class="drama-rating">
+                        <i class="fas fa-star"></i>
+                        <span>8.7/10</span>
+                    </div>
+                    <p class="drama-description">Seorang wanita Korea Selatan terjun payung dan mendarat di Korea Utara, bertemu dengan perwira militer yang berusaha melindunginya.</p>
+                    <a href="#" class="btn">Selengkapnya</a>
+                </div>
+            </div>
+
+            <!-- Drama 2 -->
+            <div class="drama-card" onclick="showDetail(2)">
+                <img src="https://i.ibb.co/6Wcj6Gg/itaewon-class.jpg" alt="Itaewon Class" class="drama-poster">
+                <div class="drama-info">
+                    <h2 class="drama-title">Itaewon Class</h2>
+                    <div class="drama-year">2020 • 16 Episode</div>
+                    <div class="drama-rating">
+                        <i class="fas fa-star"></i>
+                        <span>8.3/10</span>
+                    </div>
+                    <p class="drama-description">Seorang pemuda membuka restoran di Itaewon setelah dikeluarkan dari sekolah dan ayahnya meninggal dalam kecelakaan.</p>
+                    <a href="#" class="btn">Selengkapnya</a>
+                </div>
+            </div>
+
+            <!-- Drama 3 -->
+            <div class="drama-card" onclick="showDetail(3)">
+                <img src="https://i.ibb.co/0nS0Ng3/goblin.jpg" alt="Guardian: The Lonely and Great God" class="drama-poster">
+                <div class="drama-info">
+                    <h2 class="drama-title">Guardian: The Lonely and Great God</h2>
+                    <div class="drama-year">2016 • 16 Episode</div>
+                    <div class="drama-rating">
+                        <i class="fas fa-star"></i>
+                        <span>8.6/10</span>
+                    </div>
+                    <p class="drama-description">Goblin yang abadi mencari pengantin manusia untuk mengakhiri keabadiannya. Bersama dengan malaikat kematian, mereka mengalami berbagai petualangan.</p>
+                    <a href="#" class="btn">Selengkapnya</a>
+                </div>
+            </div>
+
+            <!-- Drama 4 -->
+            <div class="drama-card" onclick="showDetail(4)">
+                <img src="https://i.ibb.co/4W11C3J/descendants-of-the-sun.jpg" alt="Descendants of the Sun" class="drama-poster">
+                <div class="drama-info">
+                    <h2 class="drama-title">Descendants of the Sun</h2>
+                    <div class="drama-year">2016 • 16 Episode</div>
+                    <div class="drama-rating">
+                        <i class="fas fa-star"></i>
+                        <span>8.2/10</span>
+                    </div>
+                    <p class="drama-description">Kisah cinta antara seorang dokter dan tentara penjaga perdamaian di negara fiksi Uruk. Mereka menghadapi berbagai tantangan dan bahaya.</p>
+                    <a href="#" class="btn">Selengkapnya</a>
+                </div>
+            </div>
+
+            <!-- Drama 5 -->
+            <div class="drama-card" onclick="showDetail(5)">
+                <img src="https://i.ibb.co/0Q8N8Y9/hotel-del-luna.jpg" alt="Hotel del Luna" class="drama-poster">
+                <div class="drama-info">
+                    <h2 class="drama-title">Hotel del Luna</h2>
+                    <div class="drama-year">2019 • 16 Episode</div>
+                    <div class="drama-rating">
+                        <i class="fas fa-star"></i>
+                        <span>8.1/10</span>
+                    </div>
+                    <p class="drama-description">Hotel misterius yang hanya terlihat oleh orang-orang yang memiliki pengalaman dengan dunia supernatural dan dikelola oleh wanita cantik namun eksentrik.</p>
+                    <a href="#" class="btn">Selengkapnya</a>
+                </div>
+            </div>
         </div>
     </div>
 
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 Drama Korea Terpopuler. All rights reserved.</p>
+        <p>Website dibuat untuk para penggemar drama Korea</p>
+    </footer>
+
+    <!-- JavaScript untuk menangani navigasi -->
     <script>
-        // Data video dan direct link Adsterra
-        const videos = [
-            {
-                id: 1,
-                driveId: "1--1NYFs5tZiizwV0Zvn1Yi07JVN4fLl5" // Ganti dengan ID Google Drive video Anda
+        // Data drama (biasanya ini akan diambil dari database)
+        const dramas = {
+            1: {
+                title: "Crash Landing on You",
+                year: "2019",
+                episodes: "16",
+                rating: "8.7",
+                poster: "https://i.ibb.co/6RJ0hQ6/crash-landing-on-you.jpg",
+                description: "Crash Landing on You menceritakan tentang Yoon Se-ri (Son Ye-jin), seorang pewaris perusahaan mode yang sukses asal Korea Selatan. Suatu hari, ketika ia sedang melakukan paralayang, angin kencang menerbangkannya hingga mendarat di Korea Utara. Di sana, ia bertemu dengan Ri Jeong-hyeok (Hyun Bin), seorang perwira militer Korea Utara. Meskipun awalnya berhati-hati, Jeong-hyeok akhirnya memutuskan untuk membantu Se-ri bersembunyi dan kembali ke Korea Selatan.",
+                cast: ["Hyun Bin", "Son Ye-jin", "Seo Ji-hye", "Kim Jung-hyun"],
+                genre: ["Romance", "Drama", "Comedy"]
             },
-            {
-                id: 2,
-                driveId: "1zCaeFd97U3XLTT3FTM5rWoWCDpTXGc3e" // Ganti dengan ID Google Drive video Anda
+            2: {
+                title: "Itaewon Class",
+                year: "2020",
+                episodes: "16",
+                rating: "8.3",
+                poster: "https://i.ibb.co/6Wcj6Gg/itaewon-class.jpg",
+                description: "Itaewon Class bercerita tentang Park Sae-ro-yi (Park Seo-joon) yang membuka restoran pub di kawasan Itaewon setelah dikeluarkan dari sekolah dan ayahnya meninggal dalam kecelakaan. Sae-ro-yi bertekad untuk membalas dendam pada keluarga Jang yang bertanggung jawab atas kehancuran hidupnya. Dengan bantuan manajer jenius Jo Yi-seo (Kim Da-mi) dan karyawan lainnya, Sae-ro-yi berusaha membuat restorannya sukses dan mengalahkan perusahaan makanan terbesar di Korea.",
+                cast: ["Park Seo-joon", "Kim Da-mi", "Yoo Jae-myung", "Kwon Nara"],
+                genre: ["Drama", "Business", "Revenge"]
             },
-            {
-                id: 3,
-                driveId: "1G5VhdEFinx2PCgJ9nNtxQ3iMcspp44Ml" // Ganti dengan ID Google Drive video Anda
+            3: {
+                title: "Guardian: The Lonely and Great God",
+                year: "2016",
+                episodes: "16",
+                rating: "8.6",
+                poster: "https://i.ibb.co/0nS0Ng3/goblin.jpg",
+                description: "Guardian: The Lonely and Great God menceritakan tentang Kim Shin (Gong Yoo), seorang jenderal dari zaman Goryeo yang dikutuk menjadi goblin abadi setelah dihukum mati oleh raja. Satu-satunya cara untuk mengakhiri keabadiannya adalah dengan menemukan 'pengantin goblin' yang dapat menarik pedang dari tubuhnya. Dia tinggal bersama malaikat kematian (Lee Dong-wook) yang kehilangan ingatan tentang masa lalunya. Cerita menjadi rumit ketika Kim Shin bertemu Ji Eun-tak (Kim Go-eun), seorang siswa SMA yang mengklaim sebagai pengantin goblin.",
+                cast: ["Gong Yoo", "Kim Go-eun", "Lee Dong-wook", "Yoo In-na"],
+                genre: ["Fantasy", "Romance", "Drama"]
             },
-            {
-                id: 4,
-                driveId: "1c36ZG_9J0DQ3FCoSqxpo3rWlov87dDM0" // Ganti dengan ID Google Drive video Anda
-                          },
-            {
-                id: 5,
-                driveId: "1V2_Ur2ntUM8x-ifOn_NCKqHML4gz8GpS" // Ganti dengan ID Google Drive video Anda
+            4: {
+                title: "Descendants of the Sun",
+                year: "2016",
+                episodes: "16",
+                rating: "8.2",
+                poster: "https://i.ibb.co/4W11C3J/descendants-of-the-sun.jpg",
+                description: "Descendants of the Sun bercerita tentang percintaan antara Kapten Yoo Si-jin (Song Joong-ki), pemimpin tim dari unit khusus Korea Selatan, dan Dr. Kang Mo-yeon (Song Hye-kyo), seorang dokter di rumah sakit besar. Mereka pertama kali bertemu di rumah sakit ketika Si-jin menjalani perawatan. Namun, hubungan mereka terhambat oleh perbedaan jadwal dan tanggung jawab. Takdir mempertemukan mereka kembali ketika Mo-yeon dikirim untuk misi kemanusiaan di Uruk, negara fiksi yang dilanda perang, di mana Si-jin juga sedang bertugas sebagai pasukan penjaga perdamaian.",
+                cast: ["Song Joong-ki", "Song Hye-kyo", "Jin Goo", "Kim Ji-won"],
+                genre: ["Romance", "Drama", "Action"]
             },
-            {
-                id: 6,
-                driveId: "1D2U883m9T4X5lAKKeFpKfGOW0dD8p6HD" // Ganti dengan ID Google Drive video Anda
-            },
-            {
-                id: 7,
-                driveId: "1VvNpEIi6_mzuW3-3zInCMvmbos9_EsLE" // Ganti dengan ID Google Drive video Anda
-                          },
-            {
-                id: 8,
-                driveId: "1sEmRCHEo2pADcuMHXrPKKS_PhNFMIokw" // Ganti dengan ID Google Drive video Anda
-                                        },
-            {
-                id: 9,
-                driveId: "1AJNicOCG8YCjzaqpfAqOCksS9I2clZCD" // Ganti dengan ID Google Drive video Anda
+            5: {
+                title: "Hotel del Luna",
+                year: "2019",
+                episodes: "16",
+                rating: "8.1",
+                poster: "https://i.ibb.co/0Q8N8Y9/hotel-del-luna.jpg",
+                description: "Hotel del Luna adalah hotel misterius yang hanya terlihat oleh orang-orang yang memiliki pengalaman dengan dunia supernatural. Hotel ini dikelola oleh Jang Man-wol (IU), wanita cantik namun eksentrik yang terjebak mengelola hotel selama 1000 tahun karena dosa masa lalunya. Karena suatu peristiwa, CEO multinational Gu Chan-sung (Yeo Jin-goo) dipaksa menjadi manajer hotel yang baru. Bersama-sama, mereka mengurus hotel dan membantu arwah-arwah yang belum dapat melanjutkan perjalanan mereka.",
+                cast: ["IU", "Yeo Jin-goo", "Shin Jung-keun", "Bae Hae-sun"],
+                genre: ["Fantasy", "Horror", "Romance"]
             }
-        ];
+        };
 
-        // Ganti dengan direct link Adsterra Anda
-        const adsterraDirectLink = "https://weekendorgans.com/py7edtmrm?key=95a3f7f1015518a365038da788c6d164";
-
-        const videoPlayer = document.getElementById('video-player');
-        const episodeListContainer = document.getElementById('episode-list');
-        const loadingOverlay = document.getElementById('loading-overlay');
-
-        let currentEpisodeId = 1; // Episode awal yang dimuat
-
-        // Fungsi untuk memuat video dengan buffering palsu
-        function loadVideo(episodeId) {
-            const episode = videos.find(v => v.id === episodeId);
-            if (episode) {
-                // Tampilkan overlay loading palsu
-                loadingOverlay.classList.remove('hidden');
-
-                // Atur timeout sebelum memuat video sebenarnya
-                setTimeout(() => {
-                    // Sembunyikan overlay loading
-                    loadingOverlay.classList.add('hidden');
-                    // Perbarui src dari pemutar video dengan Google Drive embed URL
-                    videoPlayer.src = `https://drive.google.com/file/d/${episode.driveId}/preview?embedded=true`;
-                    updateActiveEpisode(episodeId);
-                }, 1500); // Delay 1.5 detik
-            }
+        // Fungsi untuk menampilkan detail drama
+        function showDetail(dramaId) {
+            const drama = dramas[dramaId];
+            
+            // Buat URL parameter untuk halaman detail
+            const params = new URLSearchParams();
+            params.set('id', dramaId);
+            params.set('title', drama.title);
+            
+            // Simpan data drama ke sessionStorage untuk diakses di halaman detail
+            sessionStorage.setItem('dramaDetail', JSON.stringify(drama));
+            
+            // Redirect ke halaman detail
+            window.location.href = `detail.html?${params.toString()}`;
         }
-
-        // Fungsi untuk memperbarui status episode aktif
-        function updateActiveEpisode(activeId) {
-            document.querySelectorAll('.episode-item').forEach(item => {
-                // Hapus kelas 'active' dan 'clicked-redirect' dari semua item
-                item.classList.remove('active');
-                item.classList.remove('clicked-redirect');
-            });
-            const activeElement = document.getElementById(`episode-${activeId}`);
-            if (activeElement) {
-                activeElement.classList.add('active');
-            }
-        }
-
-        // Fungsi untuk membuat daftar episode
-        function generateEpisodeList() {
-            episodeListContainer.innerHTML = ''; // Bersihkan daftar episode yang ada
-            const totalEpisodes = 12; // Sesuai contoh gambar
-            for (let i = 1; i <= totalEpisodes; i++) {
-                const episodeItem = document.createElement('div');
-                episodeItem.id = `episode-${i}`;
-                episodeItem.classList.add('episode-item', 'rounded-md', 'shadow-sm');
-
-                if (i <= 9) {
-                    // Episode 1-4 bisa diputar dengan buffering palsu
-                    episodeItem.textContent = i;
-                    episodeItem.addEventListener('click', () => {
-                        loadVideo(i);
-                        currentEpisodeId = i;
-                    });
-                } else {
-                    // Episode 5 dan seterusnya mengarah ke direct link Adsterra dengan buffering palsu
-                    episodeItem.textContent = i;
-                    episodeItem.addEventListener('click', () => {
-                        // Pastikan semua episode lain tidak aktif atau berwarna merah
-                        updateActiveEpisode(null);
-
-                        // 1. Feedback Visual Saat Klik
-                        episodeItem.classList.add('clicked-redirect');
-
-                        // 2. Tampilkan overlay loading palsu
-                        loadingOverlay.classList.remove('hidden');
-
-                        // 3. Atur timeout sebelum mengarahkan ke link Adsterra
-                        setTimeout(() => {
-                            // Sembunyikan overlay loading
-                            loadingOverlay.classList.add('hidden');
-                            // Hapus kelas feedback visual
-                            episodeItem.classList.remove('clicked-redirect');
-                            // Arahkan ke direct link Adsterra
-                            window.open(adsterraDirectLink, '_blank');
-                        }, 1500); // Delay 1.5 detik
-                    });
-                }
-                episodeListContainer.appendChild(episodeItem);
-            }
-            updateActiveEpisode(currentEpisodeId); // Set episode 1 sebagai aktif saat pertama kali dimuat
-        }
-
-        // Inisialisasi halaman
-        document.addEventListener('DOMContentLoaded', () => {
-            generateEpisodeList();
-            loadVideo(currentEpisodeId); // Muat episode 1 secara default dengan buffering palsu
-        });
     </script>
 </body>
 </html>
-
-<script async="async" data-cfasync="false" src="//weekendorgans.com/97f075c73ae898cb38d3a08ebea43484/invoke.js"></script>
-<div id="container-97f075c73ae898cb38d3a08ebea43484"></div>
