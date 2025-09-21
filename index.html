@@ -9,16 +9,304 @@
   </style>
 </head>
 <body>
-  <h1>Hello, Telegram Mini App!</h1>
-  <button onclick="sendData()">Kirim Data ke Bot</button>
-  <script>
-    const tg = window.Telegram.WebApp;
-    tg.expand(); // Maximize the app
+<div class="separator" style="clear: both; text-align: left;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh6zI8XVrWUSdJoxp7oEiju7K0SawXTrwsORxFI5JOeJcfuKbvoUNPMXzmsrR3FeMQC29ZYujVnMHWPSvGiBxqn6Ays3j4o98azuQK9JJJC1JvQkhZMWXZHK2UNLTrfEMd4M1yRS5xSVZtSFYEbL26kiitlsGx1O5oYc0wjdpU4ceVabL4betg5tV2e3c8/s300/film-bon-appetit-your-majesty-2025.png" imageanchor="1" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"><img border="0" data-original-height="344" data-original-width="258" height="200" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh6zI8XVrWUSdJoxp7oEiju7K0SawXTrwsORxFI5JOeJcfuKbvoUNPMXzmsrR3FeMQC29ZYujVnMHWPSvGiBxqn6Ays3j4o98azuQK9JJJC1JvQkhZMWXZHK2UNLTrfEMd4M1yRS5xSVZtSFYEbL26kiitlsGx1O5oYc0wjdpU4ceVabL4betg5tV2e3c8/s300/film-bon-appetit-your-majesty-2025.png" width="150" /></a><b>Sinopsis: </b>Dalam "Bon Appetit, Your Majesty" (2025), seorang pelayan makanan bernama Min-Ho tiba-tiba dibawa kembali ke masa lalu dan menjadi koki pribadi Raja. Dengan keahlian memasaknya, Min-Ho harus memenangkan hati Raja dan mengubah sejarah.</div>
+<br>
+<br>
+<br>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
 
-    function sendData() {
-      tg.sendData(JSON.stringify({ action: "button_click" }));
-      tg.close(); // Tutup app setelah mengirim data
-    }
-  </script>
+<html lang="id">
+<head>
+    <meta charset="UTF-8"></meta>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"></meta>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"></link>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding: 10px;
+        }
+        .main-container {
+            max-width: 900px;
+            width: 100%;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        @media (min-width: 768px) {
+            body {
+                padding: 20px;
+            }
+            .main-container {
+                padding: 30px;
+            }
+        }
+        .video-player-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .video-player-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            border-radius: 8px;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .loading-overlay.hidden {
+            display: none;
+            opacity: 0;
+        }
+        .loading-overlay:not(.hidden) {
+            opacity: 1;
+        }
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid #fff;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .episode-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .episode-item {
+            background-color: #fff;
+            padding: 15px 10px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border: 1px solid #e2e8f0;
+        }
+        .episode-item:hover {
+            background-color: #e2e8f0;
+            transform: translateY(-2px);
+        }
+        .episode-item.active {
+            background-color: #ef4444;
+            color: white;
+            border-color: #ef4444;
+        }
+        .episode-item.clicked-redirect {
+            background-color: #fca5a5;
+            border-color: #ef4444;
+            color: #fff;
+        }
+        .sinopsis {
+            background-color: #f9fafb;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: #4a5568;
+            border: 1px solid #edf2f7;
+        }
+        .sinopsis strong {
+            color: #2d3748;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <!-- Main Content Area (Video Player) -->
+        <div class="video-player-wrapper">
+            <!-- Single video player iframe -->
+            <iframe allowfullscreen="" id="video-player"></iframe>
+            <!-- Loading overlay -->
+            <div class="loading-overlay hidden" id="loading-overlay">
+                <div class="spinner"></div>
+                <p class="text-white mt-4">Memuat episode...</p>
+            </div>
+        </div>
+
+        <!-- Episode List -->
+        <div class="episode-grid" id="episode-list">
+            <!-- Episodes will be generated here by JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        // Data video dan direct link Adsterra
+        const videos = [
+            {
+                id: 1,
+                driveId: "1--1NYFs5tZiizwV0Zvn1Yi07JVN4fLl5" // Ganti dengan ID Google Drive video Anda
+            },
+            {
+                id: 2,
+                driveId: "1zCaeFd97U3XLTT3FTM5rWoWCDpTXGc3e" // Ganti dengan ID Google Drive video Anda
+            },
+            {
+                id: 3,
+                driveId: "1G5VhdEFinx2PCgJ9nNtxQ3iMcspp44Ml" // Ganti dengan ID Google Drive video Anda
+            },
+            {
+                id: 4,
+                driveId: "1c36ZG_9J0DQ3FCoSqxpo3rWlov87dDM0" // Ganti dengan ID Google Drive video Anda
+                          },
+            {
+                id: 5,
+                driveId: "1V2_Ur2ntUM8x-ifOn_NCKqHML4gz8GpS" // Ganti dengan ID Google Drive video Anda
+            },
+            {
+                id: 6,
+                driveId: "1D2U883m9T4X5lAKKeFpKfGOW0dD8p6HD" // Ganti dengan ID Google Drive video Anda
+            },
+            {
+                id: 7,
+                driveId: "1VvNpEIi6_mzuW3-3zInCMvmbos9_EsLE" // Ganti dengan ID Google Drive video Anda
+                          },
+            {
+                id: 8,
+                driveId: "1sEmRCHEo2pADcuMHXrPKKS_PhNFMIokw" // Ganti dengan ID Google Drive video Anda
+                                        },
+            {
+                id: 9,
+                driveId: "1AJNicOCG8YCjzaqpfAqOCksS9I2clZCD" // Ganti dengan ID Google Drive video Anda
+            }
+        ];
+
+        // Ganti dengan direct link Adsterra Anda
+        const adsterraDirectLink = "https://weekendorgans.com/py7edtmrm?key=95a3f7f1015518a365038da788c6d164";
+
+        const videoPlayer = document.getElementById('video-player');
+        const episodeListContainer = document.getElementById('episode-list');
+        const loadingOverlay = document.getElementById('loading-overlay');
+
+        let currentEpisodeId = 1; // Episode awal yang dimuat
+
+        // Fungsi untuk memuat video dengan buffering palsu
+        function loadVideo(episodeId) {
+            const episode = videos.find(v => v.id === episodeId);
+            if (episode) {
+                // Tampilkan overlay loading palsu
+                loadingOverlay.classList.remove('hidden');
+
+                // Atur timeout sebelum memuat video sebenarnya
+                setTimeout(() => {
+                    // Sembunyikan overlay loading
+                    loadingOverlay.classList.add('hidden');
+                    // Perbarui src dari pemutar video dengan Google Drive embed URL
+                    videoPlayer.src = `https://drive.google.com/file/d/${episode.driveId}/preview?embedded=true`;
+                    updateActiveEpisode(episodeId);
+                }, 1500); // Delay 1.5 detik
+            }
+        }
+
+        // Fungsi untuk memperbarui status episode aktif
+        function updateActiveEpisode(activeId) {
+            document.querySelectorAll('.episode-item').forEach(item => {
+                // Hapus kelas 'active' dan 'clicked-redirect' dari semua item
+                item.classList.remove('active');
+                item.classList.remove('clicked-redirect');
+            });
+            const activeElement = document.getElementById(`episode-${activeId}`);
+            if (activeElement) {
+                activeElement.classList.add('active');
+            }
+        }
+
+        // Fungsi untuk membuat daftar episode
+        function generateEpisodeList() {
+            episodeListContainer.innerHTML = ''; // Bersihkan daftar episode yang ada
+            const totalEpisodes = 12; // Sesuai contoh gambar
+            for (let i = 1; i <= totalEpisodes; i++) {
+                const episodeItem = document.createElement('div');
+                episodeItem.id = `episode-${i}`;
+                episodeItem.classList.add('episode-item', 'rounded-md', 'shadow-sm');
+
+                if (i <= 9) {
+                    // Episode 1-4 bisa diputar dengan buffering palsu
+                    episodeItem.textContent = i;
+                    episodeItem.addEventListener('click', () => {
+                        loadVideo(i);
+                        currentEpisodeId = i;
+                    });
+                } else {
+                    // Episode 5 dan seterusnya mengarah ke direct link Adsterra dengan buffering palsu
+                    episodeItem.textContent = i;
+                    episodeItem.addEventListener('click', () => {
+                        // Pastikan semua episode lain tidak aktif atau berwarna merah
+                        updateActiveEpisode(null);
+
+                        // 1. Feedback Visual Saat Klik
+                        episodeItem.classList.add('clicked-redirect');
+
+                        // 2. Tampilkan overlay loading palsu
+                        loadingOverlay.classList.remove('hidden');
+
+                        // 3. Atur timeout sebelum mengarahkan ke link Adsterra
+                        setTimeout(() => {
+                            // Sembunyikan overlay loading
+                            loadingOverlay.classList.add('hidden');
+                            // Hapus kelas feedback visual
+                            episodeItem.classList.remove('clicked-redirect');
+                            // Arahkan ke direct link Adsterra
+                            window.open(adsterraDirectLink, '_blank');
+                        }, 1500); // Delay 1.5 detik
+                    });
+                }
+                episodeListContainer.appendChild(episodeItem);
+            }
+            updateActiveEpisode(currentEpisodeId); // Set episode 1 sebagai aktif saat pertama kali dimuat
+        }
+
+        // Inisialisasi halaman
+        document.addEventListener('DOMContentLoaded', () => {
+            generateEpisodeList();
+            loadVideo(currentEpisodeId); // Muat episode 1 secara default dengan buffering palsu
+        });
+    </script>
 </body>
 </html>
+
+<script async="async" data-cfasync="false" src="//weekendorgans.com/97f075c73ae898cb38d3a08ebea43484/invoke.js"></script>
+<div id="container-97f075c73ae898cb38d3a08ebea43484"></div>
